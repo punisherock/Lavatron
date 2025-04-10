@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Cesta de Compra - MediaMierk</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .ventana-enigma {
+            display: none; /* Ocultar inicialmente */
+            position: fixed; /* Posición fija en la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+            justify-content: center;
+            align-items: center;
+            z-index: 10; /* Asegurar que esté por encima de otros elementos */
+        }
+
+        .modal-contenido {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .cerrar-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .cerrar-modal:hover,
+        .cerrar-modal:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .total-container {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .boton-enigma {
+            padding: 10px 20px;
+            background-color: #ffc107; /* Amarillo llamativo */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .boton-enigma:hover {
+            background-color: #e0a800;
+        }
+
+        .imagen-miniatura {
+            width: 80px; /* Ajusta el tamaño según desees */
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle; /* Alinear verticalmente con el texto */
+        }
+
+        .item-cesta p {
+            display: inline; /* Para que el texto esté en la misma línea que la imagen */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tu Cesta de Compra</h1>
+        <p>¡Casi la tienes! Revisa tu pedido.</p>
+        <a href="lavadora_deluxe.html">Volver a la Lavadora LavaTron Deluxe</a>
+    </header>
+
+    <main>
+        <section class="cesta-detalle">
+            <h2>Artículos en tu Cesta</h2>
+            <div class="item-cesta">
+                <img src="img/lavadora_deluxe.jpg" alt="LavaTron Deluxe" class="imagen-miniatura">
+                <p><strong>LavaTron Deluxe</strong> - Precio ofertado: 299.99€</p>
+                </div>
+
+            <p class="nota-iva">Nota importante: El precio ofertado no incluye el IVA (¡sorpresa!).</p>
+
+            <div class="total-container">
+                <button id="boton-enigma" class="boton-enigma">¿Cuánto cuesta realmente esta lavadora?</button>
+            </div>
+
+            <div id="ventana-enigma" class="ventana-modal">
+                <div class="modal-contenido">
+                    <span class="cerrar-modal">&times;</span>
+                    <h2>¡Enigma de Pago!</h2>
+                    <p>¿Cuál sería el precio real de esta lavadora?</p>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 MediaMierk - ¡A calcular!</p>
+    </footer>
+
+    <script>
+        const botonEnigma = document.getElementById('boton-enigma');
+        const ventanaEnigma = document.getElementById('ventana-enigma');
+        const cerrarModal = document.querySelector('.cerrar-modal');
+
+        botonEnigma.addEventListener('click', () => {
+            ventanaEnigma.style.display = 'flex'; /* Usar flex para centrar */
+        });
+
+        cerrarModal.addEventListener('click', () => {
+            ventanaEnigma.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == ventanaEnigma) {
+                ventanaEnigma.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
